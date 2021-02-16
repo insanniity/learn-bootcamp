@@ -1,6 +1,9 @@
 package com.insannity.learn.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.insannity.learn.entities.enums.ResourceType;
@@ -31,6 +35,9 @@ public class Resource implements Serializable{
     @ManyToOne
 	@JoinColumn(name = "offer_id")
     private Offer offer;
+
+    @OneToMany(mappedBy = "resource")
+    private List<Section> sections = new ArrayList<>();
 
 
     public Resource() {
@@ -113,13 +120,14 @@ public class Resource implements Serializable{
             return false;
         }
         Resource resource = (Resource) o;
-        return Objects.equals(id, resource.id) && Objects.equals(title, resource.title) && Objects.equals(description, resource.description) && Objects.equals(position, resource.position) && Objects.equals(imgUri, resource.imgUri) && Objects.equals(type, resource.type) && Objects.equals(offer, resource.offer);
+        return Objects.equals(id, resource.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, position, imgUri, type, offer);
+        return Objects.hashCode(id);
     }
+    
     
 
 
