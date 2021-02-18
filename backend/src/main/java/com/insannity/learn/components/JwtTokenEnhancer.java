@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
 
-
+@SuppressWarnings("deprecation")
 @Component
 public class JwtTokenEnhancer implements TokenEnhancer {
 
