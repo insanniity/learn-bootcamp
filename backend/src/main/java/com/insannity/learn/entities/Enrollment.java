@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 import com.insannity.learn.entities.pk.EnrollmentPK;
 
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tbl_enrollments")
